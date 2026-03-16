@@ -1,3 +1,5 @@
+"""This program demonstrates understanding of functions and basic Python loops such as while.
+The data structure dictionary is also create code for Coffe MAchine project as stated in Coffee+Machine+Program+Requirements.pdf"""
 
 MENU = {
     "espresso": {
