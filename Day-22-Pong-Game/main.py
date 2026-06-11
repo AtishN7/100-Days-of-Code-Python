@@ -37,7 +37,17 @@ while is_game_on:
 
     #detect collision with Paddles
     if ball.distance(r_paddle) < 50 and ball.xcor() > 420 or ball.distance(l_paddle) < 50 and ball.xcor() < -420:
-        print("right collision detected")
         ball.bounce_x()
+
+    #detect ball out of bounds right side
+    if ball.xcor() > 450:
+        print("Ball out of range")
+        ball.reset_position()
+
+    # detect ball out of bounds right side
+    if ball.xcor() < -450:
+        print("Ball out of range")
+        ball.reset_position()
+
 
 screen.exitonclick() 
