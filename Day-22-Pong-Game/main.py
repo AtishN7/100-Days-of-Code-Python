@@ -1,6 +1,7 @@
 from turtle import Screen
 from paddle import Paddle
 from ball import Ball
+from scoreboard import Scoreboard
 import time
 
 
@@ -17,6 +18,7 @@ screen.tracer(0)
 r_paddle = Paddle(RPAD_POS)
 l_paddle = Paddle(LPAD_POS)
 ball = Ball()
+scoreboard = Scoreboard()
 
 screen.listen()
 screen.onkey(r_paddle.go_up,"Up")
@@ -27,7 +29,7 @@ screen.onkey(l_paddle.go_down, "s")
 is_game_on = True
 
 while is_game_on:
-    time.sleep(0.05)
+    time.sleep(ball.move_speed)
     screen.update()
     ball.move()
 
@@ -41,13 +43,13 @@ while is_game_on:
 
     #detect ball out of bounds right side
     if ball.xcor() > 450:
-        print("Ball out of range")
         ball.reset_position()
+        scoreboard.add_l_paddle_point()
 
-    # detect ball out of bounds right side
+    # detect ball out of bounds left side
     if ball.xcor() < -450:
-        print("Ball out of range")
         ball.reset_position()
+        scoreboard.add_r_paddle_point()
 
 
 screen.exitonclick() 
